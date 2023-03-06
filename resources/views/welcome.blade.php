@@ -1,5 +1,12 @@
 @extends ('layouts.nav')
 @section('continue')
+    <h3>Recherhe entre les de date </h3>
+    <form action="{{route('recherche')}}" method="git">
+        <label>Date debut : </label><input type='date' name="dateDebut">
+        <label>Date fine : </label><input type='date'  name="dateFin">
+        <button type="submit">Recherche</button>
+    </form>
+    <hr>
     <table class="table">
         <thead>
             <tr>
@@ -22,7 +29,7 @@
                     <form action="{{route('client.destroy',$client->id)}}" method="post">
                         @method('DELETE')
                         @csrf
-                        <td><button type="submit" class="btn btn-outline-danger">Delete</a></td>
+                        <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
                     </form>
                 </tr>
                 <tr>

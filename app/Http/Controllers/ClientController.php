@@ -92,7 +92,12 @@ class ClientController extends Controller
         return redirect()->route('client.index');
     }
     public function forceDelete($id){
-        Client::withTrashed()->where('id' , $id)->forceDelete();
-        return redirect()->route('client.show' ,['id'=> 1]);
+        Client::withTrashed()->where('id',$id)->forceDelete();
+        return redirect()->route('client.show',$id);
+    }
+    public function recherche(Request $request){
+        $client = Client::dated()->get();
+        return $client;
     }
 }
+    

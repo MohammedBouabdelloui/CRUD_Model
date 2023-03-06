@@ -11,4 +11,8 @@ class Client extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable=['email','password','city'];
+
+    public function scopeDated($query){
+        return $query->where('id','>',1);
+    }
 }
