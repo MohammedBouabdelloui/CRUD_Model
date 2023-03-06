@@ -1,5 +1,12 @@
 @extends ('layouts.nav')
 @section('continue')
+
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <p>{{$error}}</p>
+        @endforeach
+    @endif
+
     <h1>this is page add user</h1><br>
     @empty($client)
     <form action="{{route('client.create')}}" method="get">
@@ -7,7 +14,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input type="text" name="email" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>

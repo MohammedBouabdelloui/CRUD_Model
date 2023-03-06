@@ -29,6 +29,11 @@ class ClientController extends Controller
         // $client->city = $request->city;
         // $client->save();
         // return response('ajoutée');
+        $request->validate([
+            'email' => 'required|email|unique:clients',
+            'password' => 'required',
+            'city' => 'required',
+        ]);
         Client::create([
             'email'=>$request->email,
             'city'=>$request->city,
@@ -100,4 +105,3 @@ class ClientController extends Controller
         return $client;
     }
 }
-    
