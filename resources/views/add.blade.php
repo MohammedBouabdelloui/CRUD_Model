@@ -1,9 +1,9 @@
 @extends ('layouts.nav')
 @section('continue')
 
-    <h1>this is page add user</h1><br>
-    @empty($client)
     
+    @empty($client)
+    <h1>this is page add user</h1><br>
     <form action="{{route('client.create')}}" method="get">
         @if($errors->any())
             @foreach($errors->all() as $error)
@@ -38,6 +38,7 @@
     @endif
 
     @isset($client)
+        <h1>this is page update user</h1><br>
         <form action="{{route('client.update',$client->id)}}" method="POST">
             @method('PUT')
             @csrf
@@ -53,7 +54,7 @@
                 <label for="inputPassword4">Password</label>
                 <input type="password" name="password" class="@error('password') is-invalid @enderror form-control" id="inputPassword4" placeholder="Password" value="{{$client->password}}">
                 @error('password')
-                    <p>{{$message}}</p>
+                    <p style="color:red">{{$message}}</p>
                 @enderror
                 </div>
             </div>
