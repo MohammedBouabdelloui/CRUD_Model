@@ -31,7 +31,7 @@ class ClientController extends Controller
         // return response('ajoutée');
         $request->validate([
             'email' => 'required|email|unique:clients',
-            'password' => 'required',
+            'password' => 'required|min:5',
             'city' => 'required',
         ]);
         Client::create([
@@ -64,6 +64,11 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:5',
+            'city' => 'required',
+        ]);
         $client = Client::findorFail($id);
         $client->update([
             'email'=>$request->email,
