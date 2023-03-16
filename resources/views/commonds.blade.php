@@ -1,7 +1,7 @@
 @extends ('layouts.nav')
 @section('continue')
-    @isset($commonds)
-            @foreach($commonds as $commond)
+    
+        @forelse($commonds as $commond)
 
             <br>
             <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
@@ -11,9 +11,11 @@
                     <p class="card-text">{{$commond->price}}</p>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <h1>pas de commondes a ce client</h1>
+            @endforelse
         
-    @endif
+    
     
 
 @endsection
