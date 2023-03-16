@@ -13,6 +13,6 @@ class Client extends Model
     protected $fillable=['email','password','city'];
 
     public function scopeDated($query){
-        return $query->where('id','>',1);
+        return $query->where('id','>',1); 
     }
 }
