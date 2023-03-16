@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\commend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,7 +16,7 @@ class ClientController extends Controller
     {
         $clients = Client::get();
         //$client = Client::all();
-        return view('welcome', compact('clients'));
+        return view('welcome', ['clients' => $clients ]);
     }
 
     /**
@@ -42,13 +43,6 @@ class ClientController extends Controller
         return redirect()->route('client.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -108,5 +102,10 @@ class ClientController extends Controller
     public function recherche(Request $request){
         $client = Client::dated()->get();
         return $client;
+    }
+    public function commonds($id){
+        $commonds = Client::findorFail($id)->Commend;
+        return view('commonds' , compact('commonds'));
+        //return redirect()->route('client.index' , ['commonds'=>$commonds]);
     }
 }

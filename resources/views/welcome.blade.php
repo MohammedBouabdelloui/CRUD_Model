@@ -25,6 +25,9 @@
                     <td>{{$client->email}}</td>
                     <td>{{$client->password}}</td>
                     <td>{{$client->city}}</td>
+
+                    <td><a href="{{route('commonds',$client->id)}}"  class="btn btn-info">commands</a></td>
+
                     <td><a href="{{route('client.edit',$client->id)}}"  class="btn btn-outline-warning">Update</a></td>
                     <form action="{{route('client.destroy',$client->id)}}" method="post">
                         @method('DELETE')
